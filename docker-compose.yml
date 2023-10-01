@@ -9,11 +9,12 @@ x-environment: &airflow_environment
   AIRFLOW__DATABASE__SQL_ALCHEMY_CONN: postgresql+psycopg2://airflow:airflow@postgres:5432/airflow
   AIRFLOW__WEBSERVER__EXPOSE_CONFIG: 'true'
 
+
 x-depends_on: &airflow-depends-on
   postgres:
     condition: service_healthy
 
-x-airflow-image: &airflow_image apache/airflow:2.7.0-python3.10
+x-airflow-image: &airflow_image apache/airflow:2.7.2-python3.10
 # ===========
 
 
@@ -84,7 +85,9 @@ services:
     volumes:
       - ./dags:/opt/airflow/dags
       - logs:/opt/airflow/logs
-    environment: *airflow_environment
+    environment:
+      <<: *airflow_environment
+      PYTHONPATH: /opt/airflow
     command: scheduler
 
 

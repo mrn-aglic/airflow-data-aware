@@ -11,7 +11,7 @@ def _trigger():
 
 with DAG(
     dag_id="simple_producer",
-    start_date=pendulum.datetime(2023, 9, 3),
+    start_date=pendulum.datetime(2023, 10, 15),
     schedule="@hourly",
 ):
     first_task = PythonOperator(

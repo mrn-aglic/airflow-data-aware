@@ -6,14 +6,14 @@ from airflow.operators.python import PythonOperator
 from dags.include.datasets.datasets import SIMPLE_DATASET
 
 
-def _print(data_interval_end, data_interval_start):
-    print(data_interval_end)
-    print(data_interval_start)
+def _print(data_interval_start, data_interval_end):
+    print(f"data_interval_start: {data_interval_start}")
+    print(f"data_interval_end: {data_interval_end}")
 
 
 with DAG(
     dag_id="simple_consumer",
-    start_date=pendulum.datetime(2023, 9, 3),
+    start_date=pendulum.datetime(2023, 10, 15),
     schedule=[SIMPLE_DATASET],
 ):
     dummy = EmptyOperator(
