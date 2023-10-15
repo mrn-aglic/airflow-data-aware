@@ -1,6 +1,7 @@
 # Airflow data-aware scheduling
 
-The example here is extracted from
+The example here is to demonstrate the data-aware
+scheduling feature of Airflow.
 
 
 # Running the examples
@@ -13,16 +14,6 @@ or
 docker-compose up
 ```
 
-# Wildfires data
-The wildfires data used in the repo is a sample of the
-1.88 million wildfires from Kaggle ([see here](https://www.kaggle.com/datasets/rtatman/188-million-us-wildfires)).
-The sample contains 195 000 rows without OBJECT_ID and SHAPE
-columns. I first chose 225 000 rows which were just
-under 100MB. However, GitHub (currently) considers 50MB
-the file size limit, although it allows pushing files
-up to 100MB. So, I dropped the number of rows to
-195 000 rows and dropped the SHAPE and OBJECT_ID columns.
-This brought down the csv file size just below 50 MB.
-
-
 # References
+1. [Airflow data-aware scheduling docs](https://airflow.apache.org/docs/apache-airflow/stable/authoring-and-scheduling/datasets.html)
+2. [Medium story about Airflow data-aware scheduling with dynamic task mapping](https://medium.com/@MarinAgli1/a-look-into-airflow-data-aware-scheduling-and-dynamic-task-mapping-8c548d4ad79)
