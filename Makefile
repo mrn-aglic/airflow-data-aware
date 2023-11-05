@@ -7,5 +7,11 @@ build:
 down:
 	docker compose down --volumes
 
+start:
+	docker compose up
+
+stop:
+	docker compose stop
+
 run:
 	make down && docker compose up
