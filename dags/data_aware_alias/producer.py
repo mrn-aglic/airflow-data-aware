@@ -4,15 +4,15 @@ from airflow.datasets.metadata import Metadata
 from airflow.operators.python import PythonOperator
 from pendulum import DateTime
 
-from dags.include.datasets.datasets import ALIAS_DATASET
+from dags.include.datasets.datasets import ENRICHED_DATASET
 
 
 def _trigger(data_interval_start: DateTime, data_interval_end: DateTime):
     yield Metadata(
-        ALIAS_DATASET,
+        ENRICHED_DATASET,
         extra={
-            "data_interval_start": data_interval_start,
-            "data_interval_end": data_interval_end,
+            "data_interval_start": data_interval_start.isoformat(),
+            "data_interval_end": data_interval_end.isoformat(),
         },
     )
 
@@ -20,13 +20,13 @@ def _trigger(data_interval_start: DateTime, data_interval_end: DateTime):
 
 
 with DAG(
-    dag_id="simple_producer_alias",
-    start_date=pendulum.datetime(2023, 10, 15),
-    end_date=pendulum.datetime(2023, 10, 20),
-    schedule="@hourly",
+    dag_id="simple_producer_metadata",
+    start_date=pendulum.datetime(2024, 8, 1),
+    end_date=pendulum.datetime(2024, 8, 31),
+    schedule="@daily",
 ):
     first_task = PythonOperator(
         task_id="first_task",
         python_callable=_trigger,
-        outlets=[ALIAS_DATASET],
+        outlets=[ENRICHED_DATASET],
     )
