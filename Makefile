@@ -1,8 +1,11 @@
 prep:
 	sh ./prep.sh
 
+build-cl:
+	docker compose down --volumes --rmi="all" && docker compose build
+
 build:
-	docker compose down && docker compose build
+	make down && docker compose build
 
 down:
 	docker compose down --volumes
