@@ -18,9 +18,9 @@ def _resolve_event(event: DatasetEvent) -> dict:
     }
 
 
-def _resolve_dataset_events(inlet_events: list[DatasetEvent], **context) -> list[dict]:
+def _resolve_dataset_events(triggering_dataset_events, **context) -> list[dict]:
 
-    return [_resolve_event(event) for event in inlet_events[ENRICHED_DATASET]]
+    return [_resolve_event(event) for event in triggering_dataset_events[ENRICHED_DATASET.uri]]
 
 
 def _print(ds_interval_start, ds_interval_end, **context):
