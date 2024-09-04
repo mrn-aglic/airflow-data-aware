@@ -4,7 +4,7 @@ The examples here are used to demonstrate the data-aware
 scheduling feature of Airflow.
 The examples are described in the following Medium stories:
 1. [Problem with using data intervals when backfilling dataset scheduled DAGs](https://medium.com/@MarinAgli1/problem-with-using-data-intervals-when-backfilling-data-aware-dags-795594414aa2)
-2. 
+2. [Circumventing the problem of using data intervals when backfilling dataset scheduled DAGs](https://medium.com/@MarinAgli1/circumventing-the-problem-of-using-data-intervals-when-backfilling-dataset-scheduled-dags-b9f75d655d32)
 
 # Running the examples
 The examples can be run with
